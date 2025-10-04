@@ -9,7 +9,7 @@
 | Component               | Description                                                   |
 | ----------------------- | ------------------------------------------------------------- |
 | Voting App              | Backend + Frontend service — handles voting logic             |
-| Database                | Database service (PostgreSQL / MySQL) to store votes          |
+| Database                | Database service (PostgreSQL / Redis) to store votes          |
 | Nexus                   | Private Docker registry for storing built images              |
 | GitLab CI/CD            | Automated pipelines to build, test, push to Nexus, and deploy |
 | Docker / Docker Compose | Containerization and orchestration of services                |
