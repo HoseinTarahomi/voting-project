@@ -1,0 +1,35 @@
+stages:
+  - build
+  - deploy
+
+BuildVote:
+  stage: build
+  tags:
+    - build
+  script:
+    - IMAGE_TAG=$CI_COMMIT_SHORT_SHA
+    - docker build -f vote/Dockerfile -t $REGISTRY_URL/$REPO_NAME/vote:$IMAGE_TAG vote/
+    - echo $REGISTRY_PASSWORD | docker login $REGISTRY_URL -u $REGISTRY_USERNAME --password-stdin
+    - docker push $REGISTRY_URL/$REPO_NAME/vote:$IMAGE_TAG
+
+
+
+Deploy:
+  stage: deploy
+  tags:
+    - deploy
+  script:
+    # Dynamic image variables
+    - export VOTE_IMAGE=$REGISTRY_URL/$REPO_NAME/vote:$CI_COMMIT_SHORT_SHA
+
+
+    # Login to private registry
+    - echo $REGISTRY_PASSWORD | docker login $REGISTRY_URL -u $REGISTRY_USERNAME --password-stdin
+
+    # Clone docker-compose repository
+    - git clone http://root:$GITLAB_TOKEN@192.168.21.51/root/docker-compose.git app
+    - cd app
+
+    # Deploy services with dynamic images
+    - docker network inspect myapp || docker network create myapp
+    - docker-compose -f vote-compose.yaml up -d
