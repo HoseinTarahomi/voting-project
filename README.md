@@ -34,28 +34,14 @@ git clone https://github.com/HoseinTarahomi/voting-project.git
 cd voting-project
 ```
 
-2. پیکربندی دسترسی به Nexus (در فایل `.env` یا متغیرهای محیطی):
 
-```bash
-NEXUS_URL=your-nexus-domain.com
-NEXUS_USERNAME=your-username
-NEXUS_PASSWORD=your-password
-```
-
-3. ساخت و پوش ایمیج‌ها به Nexus:
-
-```bash
-docker-compose build
-docker-compose push
-```
-
-4. اجرای اپلیکیشن:
+2. اجرای اپلیکیشن:
 
 ```bash
 docker-compose up
 ```
 
-5. دسترسی به اپلیکیشن در مرورگر:
+3. دسترسی به اپلیکیشن در مرورگر:
 
 ```
 http://localhost:4000  # Frontend
