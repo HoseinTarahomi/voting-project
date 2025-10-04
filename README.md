@@ -44,8 +44,8 @@ docker-compose up
 3. دسترسی به اپلیکیشن در مرورگر:
 
 ```
-http://localhost:4000  # Frontend
-http://localhost:4001  # Backend / API
+http://localhost:4000  # Vote
+http://localhost:4001  # Result
 ```
 
 ---
