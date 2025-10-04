@@ -1,0 +1,13 @@
+version: "3"
+services:
+  vote:
+    image: "${VOTE_IMAGE}"
+    container_name: vote
+    restart: always
+    networks:
+      - myapp
+    ports:
+      - 4000:80
+networks:
+  myapp:
+    external: true

@@ -1,0 +1,14 @@
+version: "3"
+services:
+
+  result:
+    image: "${RESULT_IMAGE}"
+    container_name: result
+    restart: always
+    networks:
+      - myapp
+    ports:
+      - 4001:80
+networks:
+  myapp:
+    external: true

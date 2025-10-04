@@ -1,0 +1,11 @@
+version: "3"
+services:
+ redis:
+    image: "docker.arvancloud.ir/redis:alpine"
+    container_name: redis
+    restart: always
+    networks:
+      - myapp
+networks:
+  myapp:
+    external: true

@@ -1,0 +1,21 @@
+version: "3"
+services:
+  postgres:
+    image: "docker.arvancloud.ir/postgres:15-alpine"
+    container_name: db
+    restart: always
+    networks:
+      - myapp
+    volumes:
+      - pgdata:/var/lib/pgdata/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /var/lib/pgdata/data
+
+networks:
+  myapp:
+    external: true
+volumes:
+  pgdata:
+    external: true

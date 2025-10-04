@@ -1,0 +1,11 @@
+version: "3"
+services:
+ worker:
+    image: "${WORKER_IMAGE}"
+    container_name: worker
+    restart: always
+    networks:
+      - myapp
+networks:
+  myapp:
+    external: true
